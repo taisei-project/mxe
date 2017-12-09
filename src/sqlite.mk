@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := d7dd516775005ad87a57f428b6f86afd206cb341722927f104d3f0cf65fbb
 $(PKG)_SUBDIR   := $(PKG)-autoconf-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-autoconf-$($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := https://www.sqlite.org/2017/$($(PKG)_FILE)
-$(PKG)_DEPS     := gcc
+$(PKG)_DEPS     := cc
 
 define $(PKG)_UPDATE
     $(WGET) -q -O- 'https://www.sqlite.org/download.html' | \
@@ -22,6 +22,6 @@ define $(PKG)_BUILD
         $(MXE_CONFIGURE_OPTS) \
         --disable-readline \
         --enable-threadsafe \
-        CFLAGS="-Os"
+        CFLAGS="-Os -DSQLITE_ENABLE_COLUMN_METADATA"
     $(MAKE) -C '$(1)' -j 1 install
 endef
