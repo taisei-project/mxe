@@ -310,6 +310,8 @@ ifneq (,$(findstring $$,$(PWD)))
     $(error GNU Make chokes on paths with dollar signs)
 endif
 
+include $(PWD)/taisei.mk
+
 ifeq ($(IGNORE_SETTINGS),yes)
     $(info [ignore settings.mk])
 else ifeq ($(wildcard $(PWD)/settings.mk),$(PWD)/settings.mk)
