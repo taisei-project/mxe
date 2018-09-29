@@ -16,6 +16,8 @@ pkgconfig = '@PREFIX@/bin/@TARGET@-pkg-config'
 
 [properties]
 needs_exe_wrapper = true
+c_args = ['-D_FORTIFY_SOURCE=2', '-march=nocona', '-mtune=intel', '-g', '-gdwarf-2']
+c_link_args = ['-D_FORTIFY_SOURCE=2', '-march=nocona', '-mtune=intel', '-g', '-gdwarf-2']
 
 [host_machine]
 system = 'windows'
