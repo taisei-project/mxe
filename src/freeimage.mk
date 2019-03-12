@@ -67,16 +67,17 @@ define $(PKG)_BUILD_STATIC
 endef
 
 define $(PKG)_BUILD_SHARED
+    $(SED) -i 's,-shared -static,-shared,' '$(1)/Makefile.mingw'
     $(MAKE) -C '$(1)' -j '$(JOBS)' -f Makefile.mingw \
         CXX='$(TARGET)-g++' \
         CC='$(TARGET)-gcc' \
         AR='$(TARGET)-ar' \
         RC='$(TARGET)-windres' \
         DLLTOOL='$(TARGET)-dlltool' \
-				LD='$(TARGET)-g++' \
+        LD='$(TARGET)-g++' \
         FREEIMAGE_LIBRARY_TYPE=SHARED \
-				SHAREDLIB=libfreeimage.dll \
-				IMPORTLIB=libfreeimage.dll.a \
+        SHAREDLIB=libfreeimage.dll \
+        IMPORTLIB=libfreeimage.dll.a \
         TARGET=freeimage
 
 

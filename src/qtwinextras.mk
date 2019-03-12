@@ -5,7 +5,7 @@ $(PKG)_WEBSITE  := https://www.qt.io/
 $(PKG)_DESCR    := Qt
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION   = $(qtbase_VERSION)
-$(PKG)_CHECKSUM := f50f3c9f50133330c4512b25fd823183f9204f32dbe7fc481924a1e63b15ae94
+$(PKG)_CHECKSUM := 8d312155a7da329df41cc2ea5d265eb632be7dd9cbd789fa3bc0206b4022f557
 $(PKG)_SUBDIR    = $(subst qtbase,qtwinextras,$(qtbase_SUBDIR))
 $(PKG)_FILE      = $(subst qtbase,qtwinextras,$(qtbase_FILE))
 $(PKG)_URL       = $(subst qtbase,qtwinextras,$(qtbase_URL))
@@ -18,7 +18,7 @@ endef
 define $(PKG)_BUILD
     cd '$(1)' && '$(PREFIX)/$(TARGET)/qt5/bin/qmake' \
         -after \
-	'LIBS_PRIVATE += -lgdi32'
+        'LIBS_PRIVATE += -lgdi32'
     $(MAKE) -C '$(1)' -j '$(JOBS)'
     $(MAKE) -C '$(1)' -j 1 install
 endef
